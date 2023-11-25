@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using ScireHub.Migration;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configuración la conexión SQL server 
+builder.Services.AddDbContext<ApplicationDbContext>(opciones=> opciones.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
